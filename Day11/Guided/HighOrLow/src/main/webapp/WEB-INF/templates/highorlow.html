@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<form action="highorlow" method="post" id="inputHighLow">
+		
+		<label>Guess Number :</label><br><br>
+		<input type = "number" name="inputGuess" id="inputGuess"><br><br>
+		<input type = "submit" value="submit"><br><br>
+		
+	</form>
+	
+	<p><span th:text="${feedback}">Response</span></p>
+	
+</body>
+
+</html>
