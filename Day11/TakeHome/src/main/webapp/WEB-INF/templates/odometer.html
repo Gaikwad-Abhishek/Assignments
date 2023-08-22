@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	
+	<h1>Get Odometer Next - Previous Reading</h1>
+
+	<form action="odometer-prev" method="post" id="inputHighLow">
+		<input type = "text" name="inputvalue" placeholder="Enter Reading">
+		<input type = "submit" value="Previous Value"><br><br>
+	</form>
+	
+	<form action="odometer-next" method="post" id="inputHighLow">
+		<input type = "text" name="inputvalue" placeholder="Enter Reading">
+		<input type = "submit" value="Next Value"><br><br>
+	</form>
+	
+	<p><span th:text="${odometerValue}">Response</span></p>
+	
+</body>
+</html>
