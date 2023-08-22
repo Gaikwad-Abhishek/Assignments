@@ -1,0 +1,37 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+.player {
+  margin: 20px;
+}
+
+.hand {
+  display: flex;
+}
+
+.card {
+  width: 50px;
+  height: 80px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin-right: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+button {
+  margin-top: 20px;
+  align-items: center;
+}
