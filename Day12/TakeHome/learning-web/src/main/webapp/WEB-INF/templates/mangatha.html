@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Magantha</title>
+	<link rel="stylesheet" href="static/mangatha.css">
+</head>
+
+<body>
+<h1 style="width:75%;text-align: center;">MAGANTHA</h1>
+<h1 class="result" th:text = "${result}"></h1>
+
+	<form action="mangatha" method="post" class="playerForm">
+		<input type="text" name="playerName" placeholder="playerName">
+		<input type="text" name="betAmount" placeholder="betAmount">
+		<label for="position">Choose Position:</label>
+		<select id="position" name="position">
+			<option value="1">IN</option>
+			<option value="0">OUT</option>
+		</select>
+		<label for="suit">Choose Card:</label>
+		<select id="suit" name="suit">
+			<option value="1">CLUBS</option>
+			<option value="2">DIAMOND</option>
+			<option value="3">HEART</option>
+			<option value="4">SPADES</option>
+		</select>
+		
+		<select id="rank" name="rank">
+			<option value="1">Ace</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+			<option value="11">Jack</option>
+			<option value="12">Queen</option>
+			<option value="13">King</option>
+		</select>
+		<div class="button-grid">
+		<input type="submit" class="mutateButton" name="action" value="add">
+		<input type="submit" class="mutateButton" name="action" value="start">
+		<input type="submit" class="mutateButton" name="action" value="draw">
+		<input type="submit" class="mutateButton" name="action" value="reset">
+		</div>
+	</form>
+
+	<div class="game">
+		<div class="card">
+					<p class="reading">++++</p>
+					<p class="reading">++++</p>
+					<p class="reading">++++</p>
+					<p class="reading">++++</p>
+				</div>
+	</div>
+	<div class="game">
+		<div class="player" id="player1">
+			<h2>IN</h2>
+			
+				<div class="card">
+					<span class="reading" th:text = "${In}"></span>
+				</div>
+			
+		</div>
+		<div class="player" id="player2">
+			<h2>OUT</h2>
+			
+				<div class="card">
+					<span class="reading" th:text = "${Out}"></span>
+				</div>
+			
+		</div>
+		
+	</div>
+	
+</body>
+
+</html>
