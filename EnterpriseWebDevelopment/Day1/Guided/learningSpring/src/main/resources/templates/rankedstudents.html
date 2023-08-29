@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Greetings!</title>
+</head>
+
+<body>
+	<h1>Wordle</h1>
+	<!--	<p th:text="${guess}">The latest guess</p>-->
+	<table>
+		<thead>
+			<tr>
+				<th>Student Info</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="matchInfo, rowStat : ${matchesList}">
+				<td th:text="${matchInfo}"></td>
+				<td><button th:data-id="${rowStat.count}">edit</button></td>
+				<td><button th:data-id="${rowStat.count}">delete</button></td>
+				
+			</tr>
+		</tbody>
+	</table>
+	<form method="post">
+		<input name="id" type="text">
+		<input name="name" type="text">
+		<input name="score" type="text">
+		<input type="submit" value="Feedback!">
+	</form>
+	
+	<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const editButtons = document.querySelectorAll(".edit-button");
+        const deleteButtons = document.querySelectorAll(".delete-button");
+
+        editButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                const studentId = button.getAttribute("data-id");
+                // Call a function to handle the edit action using the studentId
+                handleEditAction(studentId);
+            });
+        });
+
+        deleteButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                const studentId = button.getAttribute("data-id");
+                // Call a function to handle the delete action using the studentId
+                handleDeleteAction(studentId);
+            });
+        });
+
+        function handleEditAction(studentId) {
+            // Implement the logic to handle the edit action
+            console.log("Edit clicked for student ID: " + studentId);
+        }
+
+        function handleDeleteAction(studentId) {
+            // Implement the logic to handle the delete action
+            console.log("Delete clicked for student ID: " + studentId);
+        }
+    });
+</script>
+</body>
+
+</html>
