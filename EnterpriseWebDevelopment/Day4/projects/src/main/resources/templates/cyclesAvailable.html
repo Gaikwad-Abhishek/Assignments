@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Blog post</title>
+</head>
+<body th:object="${post}">
+	<form method="post" action="#" th:action="@{cycles/rent/rented}">
+		<label for="userdropdown">Select Cycle</label>
+		<select id="userdropdown" th:name="rentId">
+			<option th:each="userOption : ${userList}" th:value="${userOption.id}" th:text="${userOption.id}"></option>
+		</select>
+		<input type="submit" value="rent">
+	</form>
+</body>
+</html>
