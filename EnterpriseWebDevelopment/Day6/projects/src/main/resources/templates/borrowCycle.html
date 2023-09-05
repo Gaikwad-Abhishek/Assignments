@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Borrow Cycle</title>
+	
+	<style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+	
+	<form method="post" action="#" th:action="@{/cycles/borrow}">
+		<h1>Borrow Cycle</h1>
+		<!--<ol id="userdropdown" th:name="rentId">
+			<li th:each="userOption : ${userList}" th:value="${userOption.id}" th:text="${userOption.id}"></li>
+			<li th:each="userOption : ${userList}" th:value="${userOption.stock}" th:text="${userOption.stock}"></li>
+		</ol>-->
+		<table>
+			<tr>
+				<th>Cycle Model Number</th>
+				<th>Stock</th>
+			</tr>
+			<tr th:each="userOption : ${userList}">
+				<td th:name="cycleId" th:text="${userOption.id}"></td>
+				<td th:text="${userOption.stock}"></td>
+			</tr>
+
+		</table>
+		<label for="name">Select Model Number</label>
+		<select id="userdropdown" name="id">
+			<option th:each="userOption : ${userList}" th:value="${userOption.id}" th:text="${userOption.id}"></option>
+		</select>
+
+		<input type="submit" value="borrow">
+	</form>
+</body>
+
+</html>
