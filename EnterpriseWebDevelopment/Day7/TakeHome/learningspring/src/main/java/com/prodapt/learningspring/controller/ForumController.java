@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.prodapt.learningspring.business.LoggedInUser;
+import com.prodapt.learningspring.business.NeedsAuth;
 import com.prodapt.learningspring.controller.binding.AddPostForm;
 import com.prodapt.learningspring.controller.exception.ResourceNotFoundException;
 //import com.prodapt.learningspring.entity.CommentId;
@@ -65,10 +66,11 @@ public class ForumController {
 //  }
   
   @GetMapping("/post/form")
+  @NeedsAuth(loginPage = "/loginpage")
   public String getPostForm(Model model) {
-	  if (this.loggedInUser.getLoggedInUser() == null) {
-          return "redirect:/loginpage";
-      }
+//	  if (this.loggedInUser.getLoggedInUser() == null) {
+//          return "redirect:/loginpage";
+//      }
 	userList = new ArrayList<>();
     model.addAttribute("postForm", new AddPostForm());
     userRepository.findAll().forEach(user -> userList.add(user));
@@ -78,6 +80,7 @@ public class ForumController {
   }
   
   @PostMapping("/post/add")
+  @NeedsAuth(loginPage = "/loginpage")
   public String addNewPost(@ModelAttribute("postForm") AddPostForm postForm, BindingResult bindingResult, RedirectAttributes attr) throws ServletException {
     if (bindingResult.hasErrors()) {
       System.out.println(bindingResult.getFieldErrors());
@@ -85,7 +88,9 @@ public class ForumController {
       attr.addFlashAttribute("post", postForm);
       return "redirect:/forum/post/form";
     }
-    Optional<User> user = userRepository.findById(postForm.getUserId());
+    User log_user = this.loggedInUser.getLoggedInUser();
+//    Optional<User> user = userRepository.findById(postForm.getUserId());
+    Optional<User> user = userRepository.findById(log_user.getUserId());
     if (user.isEmpty()) {
       throw new ServletException("Something went seriously wrong and we couldn't find the user in the DB");
     }
@@ -98,6 +103,7 @@ public class ForumController {
   }
   
   @GetMapping("/post/{id}")
+  @NeedsAuth(loginPage = "/loginpage")
   public String postDetail(@PathVariable int id, Model model) throws ResourceNotFoundException {
     Optional<Post> post = postRepository.findById(id);
     if (post.isEmpty()) {
@@ -112,17 +118,23 @@ public class ForumController {
   }
   
   @PostMapping("/post/{id}/like")
+  @NeedsAuth(loginPage = "/loginpage")
   public String postLike(@PathVariable int id, Long likerId, RedirectAttributes attr) {
-	if (this.loggedInUser.getLoggedInUser() == null) {
-          return "redirect:/loginpage";
-    }
+//	if (this.loggedInUser.getLoggedInUser() == null) {
+//          return "redirect:/loginpage";
+//    }
 	LikeId likeId = new LikeId();
-    User user = this.loggedInUser.getLoggedInUser();
+    Optional<User> user = userRepository.findUserById(this.loggedInUser.getLoggedInUser().getUserId());
+//	User user = this.loggedInUser.getLoggedInUser();
     likeId.setUser(userRepository.findById(user.getUserId()).get());
     likeId.setPost(postRepository.findById(id).get());
     LikeRecord like = new LikeRecord();
     like.setLikeId(likeId);
+    try {
     likeCRUDRepository.save(like);
+    }catch(Exception e) {
+    	return String.format("redirect:/forum/post/%d", id);
+    }
     return String.format("redirect:/forum/post/%d", id);
   }
   
