@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import com.prodapt.learningspring.entity.User;
 
-@Repository
 public interface UserRepository extends CrudRepository<User, Long>{
     public Optional<User> findByName(String name);
     public Optional<User> findUserById(Long Id);

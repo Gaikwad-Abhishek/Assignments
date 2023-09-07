@@ -10,6 +10,7 @@
 		<label for="content">Content</label>
 		<textarea id="content" name="content" th:field="*{content}"></textarea>
 		<label for="userdropdown">Select your username</label>
+		<input type="hidden" th:field="*{userId}">
 <!--		<select id="userdropdown" th:field="*{userId}">-->
 <!--			<option th:each="userOption : ${userList}" th:value="${userOption.id}" th:text="${userOption.name}"></option>-->
 <!--		</select>-->
