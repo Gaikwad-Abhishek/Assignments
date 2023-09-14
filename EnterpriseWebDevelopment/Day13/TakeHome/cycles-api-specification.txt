@@ -1,0 +1,106 @@
+openapi: 3.0.0
+info:
+  title: Cycle Shop API
+  description: API for managing cycles in a cycle shop.
+  version: 1.0.0
+paths:
+  /api/cycles/{id}/borrow:
+    post:
+      summary: Borrow a cycle
+      requestBody:
+        description: JSON object containing cycle ID and count.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CycleJsonInputIdCount'
+      responses:
+        '200':
+          description: Cycle borrowed successfully.
+        '404':
+          description: Cycle not found.
+        '400':
+          description: Insufficient stock.
+        '500':
+          description: An error occurred.
+
+  /api/cycles/{id}/return:
+    post:
+      summary: Return a borrowed cycle
+      requestBody:
+        description: JSON object containing cycle ID and count.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CycleJsonInputIdCount'
+      responses:
+        '200':
+          description: Cycle returned successfully.
+        '404':
+          description: Cycle not found.
+        '500':
+          description: An error occurred.
+
+  /api/cycles/{id}/restock:
+    post:
+      summary: Restock cycles
+      requestBody:
+        description: JSON object containing cycle ID and count.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CycleJsonInputIdCount'
+      responses:
+        '200':
+          description: Cycle restocked successfully.
+        '404':
+          description: Cycle not found.
+        '500':
+          description: An error occurred.
+
+  /api/cycles/list-data:
+    get:
+      summary: List available cycles
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: List of available cycles.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cycle'
+        '401':
+          description: Unauthorized.
+
+components:
+  schemas:
+    CycleJsonInputIdCount:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Cycle ID.
+        count:
+          type: integer
+          description: Count of cycles to borrow, return, or restock.
+
+    Cycle:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Cycle ID.
+        name:
+          type: string
+          description: Cycle name.
+        
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
