@@ -1,0 +1,27 @@
+<h1>Restock a Cycle</h1>
+
+<!-- restock.component.html -->
+<div>
+  <p>{{ restockResult }}</p>
+  <h2>Restock Cycles</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Brand</th>
+        <th>Stock</th>
+        <th>Count to Restock</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cycle of cycles">
+        <td>{{ cycle.id }}</td>
+        <td>{{ cycle.brand }}</td>
+        <td>{{ cycle.stock }}</td>
+        <td><input type="number" [(ngModel)]="cycle.countToRestock"></td>
+        <td><button (click)="restockCycle(cycle)">Restock</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
