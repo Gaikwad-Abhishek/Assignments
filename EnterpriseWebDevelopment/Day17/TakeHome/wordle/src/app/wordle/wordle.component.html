@@ -1,0 +1,15 @@
+
+<div *ngIf="!isGameOver">
+    <h1>Wordle Game</h1>
+    <p>Attempts remaining: {{ wordleGame.getAttemptsRemaining() }}</p>
+    <p>Guessed Word: {{ wordleGame.getGuessedWord() }}</p>
+    <input type="text" [(ngModel)]="guessedWord" placeholder="Enter your guess">
+    <button (click)="guessWord(guessedWord)">Guess</button>
+  </div>
+  
+  <div *ngIf="isGameOver">
+    <h1 *ngIf="isGameWon">Congratulations, you won!</h1>
+    <h1 *ngIf="!isGameWon">Game over! The secret word was "apple".</h1>
+    <button (click)="restartGame()">Restart</button>
+  </div>
+  
