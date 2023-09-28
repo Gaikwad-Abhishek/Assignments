@@ -1,0 +1,16 @@
+<div class="container d-flex justify-content-center align-items-center" style="height: 140vh;">
+    <div class="card">
+        {{ notify }}
+        <div *ngIf="post != null" class="card-body" style="width: 39rem;">
+          <h5 class="card-title text-center">Title</h5>
+          <p class="card-text">{{ post.title }}</p>
+          <h5 class="card-text text-center">Content</h5>
+          <p class="card-text">{{ post.content }}</p>
+          <p class="card-text"><strong>Created At:</strong> {{ post.createdAt | date }}</p>
+          <p class="card-text"><strong>Posted By:</strong> {{ post.author.name }}</p>
+          <hr>
+          <app-like-comment></app-like-comment>
+        </div>
+    </div>    
+</div>
+  
