@@ -1,0 +1,126 @@
+/* styles.scss */
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+   display: grid;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .container {
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  /* Card Styles */
+  .card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+  }
+  
+  /* Table Styles */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Form Styles */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  button.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button.btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  header {
+  background-color: #1a1a1a; /* Dark background color */
+  color: #fff; /* Text color for the header */
+  padding: 4px 0; /* Smaller vertical and horizontal padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Smaller shadow */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px; /* Set your desired max width */
+  margin: 0 auto; /* Center the header horizontally */
+  padding: 0 8px; /* Smaller horizontal padding */
+}
+
+/* Style the navigation list */
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 12px; /* Smaller gap between navigation items */
+}
+
+.nav-list li a {
+  text-decoration: none;
+  color: #fff; /* Text color for navigation links */
+  font-weight: bold;
+  transition: color 0.3s, border-bottom 0.3s; /* Add transitions */
+  padding-bottom: 2px; /* Smaller underline effect on hover */
+  border-bottom: 2px solid transparent; /* Transparent underline initially */
+  font-size: 18px; /* Smaller font size */
+}
+
+.nav-list li a:hover {
+  color: #ffa500; /* Change the color on hover */
+  border-bottom: 2px solid #ffa500; /* Add an underline on hover */
+}
+
+/* Style the main content area as needed */
+router-outlet {
+  max-width: 1200px; /* Set your desired max width */
+  margin: 0 auto; /* Center the content horizontally */
+  padding: 20px; /* Adjust the padding as needed */
+}

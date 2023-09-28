@@ -1,31 +1,82 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { PostService } from 'src/app.post.service';
+import { Component, OnInit } from '@angular/core';
+import { CycleService } from './app.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'forum-project';
-  postId?: string;
+export class AppComponent  {
+  title = 'api data';
+  newData:any;
+  borrowedCycles:any;
+  showData = false;
+  showBorrowedData = false;
+  constructor(private cycleService: CycleService,private http:HttpClient) {}
 
-  constructor(private postService: PostService,private router: Router) {
+  ngOnInit()
+  {
+    // this.cycleService.getCycles().subscribe(res=>{
+    //   this.newData=res;
+    // })
+  
+    // this.cycleService.getBorrowedCycles().subscribe(res=>{
+    //   this.borrowedCycles=res;
+    // })
 
+   
   }
 
-  // setId(postId: any) {
-  //   this.postService.setPostId(parseInt(postId));
+  // toggleDataVisibility() {
+  //   this.showData = !this.showData;
+  // }
+  
+  // toggleBorrowedCyclesVisibility() {
+  //   this.showBorrowedData = !this.showBorrowedData;
+  // }
+  
+
+  // borrowCycle(id: number) {
+
+
+  //   this.cycleService.borrowCycles(id).subscribe(
+
+  //     (response: any) => {
+
+  //       console.log('PUT request successful:', response);
+  //       this.ngOnInit();
+  //     },
+
+  //        );
+  
   // }
 
-  navigateToPostComponent() {
+  // returnCycle(id:number)
+  // {
+  //   // console.log(id);
+  //   this.cycleService.returnCycles(id).subscribe
+  //   (
+  //     (Response:any) =>
+  //     {
+  //       console.log('push',Response);
+  //       this.ngOnInit();
+  //     },
+  //   );
 
-    if (this.postId) {
-      this.router.navigate(['/post-detail'], { queryParams: { postId: this.postId } });
-    }
-    
-  }
 
+  // }
 
+  // newCycle: any = {};
+  // onSubmit():any {
+  //   this.cycleService.addCycle(this.newCycle).subscribe(
+  //     (response : any) => {
+  //       console.log('Cycle added successfully:', response);
+
+  //       this.newCycle = {}; 
+  //       this.ngOnInit();
+
+  //     },
+  // );
+    //}
 }

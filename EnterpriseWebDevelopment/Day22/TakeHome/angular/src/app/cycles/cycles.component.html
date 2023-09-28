@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+  <app-navbar></app-navbar>
+  <app-user-profile></app-user-profile>
+
+    <div class="card">
+        <h1>Cycles</h1>
+        <button (click)="toggleDataVisibility()">Show Cycles</button>
+        <table *ngIf="showCycles">
+          <thead>
+            <tr>
+              <th>Cycle ID</th>
+              <th>Cycle Name</th>
+              <th>Available</th>
+              <th>Price</th>
+              <th>Count</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cycles">
+              <td>{{ item.cycleId }}</td>
+              <td>{{ item.cycleName }}</td>
+              <td>{{ item.stock-item.numBorrowed}}</td>
+              <td>{{ item.price }} Rs</td>
+              <td><input type="number" #count required [defaultValue]="1"></td>
+              <td><button (click)="borrowCycle(item.cycleId,count.value)">Add to cart</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</body>
+</html>

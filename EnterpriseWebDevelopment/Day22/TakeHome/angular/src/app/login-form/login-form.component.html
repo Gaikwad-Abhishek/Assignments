@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<app-navbar></app-navbar>
+
+<body>
+<div class="loginform">
+    <h3>Login Form</h3>
+
+<label for="username">Username: </label>
+
+<input type="text" name="username" id="username" [(ngModel)]="username">
+
+<label for="password">Password: </label>
+
+<input type="password" name="password" id="password" [(ngModel)]="password">
+
+<button type="button" (click)="login()">Login</button>
+<!-- <button (click)="loginWithGitHub()">Sign in with GitHub</button> -->
+<!-- <app-auth-button></app-auth-button> -->
+
+</div>
+</body>
+</html>

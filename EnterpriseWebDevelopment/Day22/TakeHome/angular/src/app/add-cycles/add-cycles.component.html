@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<app-navbar></app-navbar>
+<body>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="cycleName">Cycle Name</label>
+          <input type="text" class="form-control" id="cycleName" [(ngModel)]="newCycle.cycleName" name="cycleName" required>
+        </div>
+        <div class="form-group">
+          <label for="stock">Stock</label>
+          <input type="number" class="form-control" id="stock" [(ngModel)]="newCycle.stock" name="stock" required>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" id="price" [(ngModel)]="newCycle.price" name="price" required>
+          </div>
+        <button type="submit" class="btn btn-primary">Add Cycle</button>
+      </form>
+</body>
+</html>

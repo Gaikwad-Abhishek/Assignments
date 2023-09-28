@@ -1,0 +1,25 @@
+<div class="card">
+    <h1>Cart</h1>
+    <button (click)="toggleBorrowedCyclesVisibility()">Show Cycles Cart</button>
+
+    <table *ngIf="showBorrowedCycles">
+      <thead>
+        <tr>
+          <th>Cycle ID</th>
+          <th>Cycle Name</th>
+          <th>Stock</th>
+          <th>Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cycles">
+          <td>{{ item.borrowedCycleId }}</td>
+          <td>{{ item.cycleName }}</td>
+          <td>{{ item.stock }}</td>
+          <td>{{ item.price }} Rs</td>
+          <td><button (click)="returnCycle(item.borrowedCycleId)">Return</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
